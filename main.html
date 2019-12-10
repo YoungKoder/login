@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Artickles</title>
+</head>
+
+<body>
+    <div class="containerSec">
+        <header>
+            <button class="btn btn-addNew admin">
+                <span data-tip="add new article"></span>
+            </button>
+            <button class="btn btn-logOut">
+                <a href="index.html">logout</a>
+            </button>
+        </header>
+        <section class="content">
+            <div id="articles" class="articles">
+                <div class="article ">
+                    <h3 class="article-header">Title</h3>
+                    <p class="article-content">Lorem ipsum dolor sit amet.</p>
+                    <div class="article-action admin">
+                        <i class="icon icon-pen"></i>
+                        <i class="icon icon-deleteArticle"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="overlay fade">
+            <div class="popup">
+                <div class="popup-close"><i class="icon icon-closePopup"></i></div>
+                <div class="popup-article">
+                    <input name="header" class="popup-article-header article-header" placeholder="Title">
+                    <textarea name="content" class="popup-article-content article-content"
+                        placeholder="Content"></textarea>
+                </div>
+                <button class="btn btn-articleSave">Save</button>
+            </div>
+        </div>
+    </div>
+    <script src="build/js/secondPage.js"></script>
+</body>
+
+</html>

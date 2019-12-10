@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>LoginForm</title>
+</head>
+<body>
+    <div class="container">
+        <form class="form" action="file:///C:/myfiles/login/main.html">
+            <span class="form-title">LOG IN</span>
+            <div class="wrapAllInputs">
+                <div class="wrap-input" data-validate="Введите email (...@email.com)">
+                    <label for="email"><i class="icon icon-user"></i></label>
+                    <input id="email" class="input" type="text" name="email" placeholder="Email" required>
+                </div>
+                <div class="wrap-input " data-validate="Пароль должен местить 8 символов">
+                    <label for="password"><i class="icon icon-lock"></i></label>
+                    <input id="password" class="input" type="password" name="password" placeholder="Password" required>
+                </div>
+            </div>
+            <div class="wrap-btn ">
+                <button class="login-btn login-btn--disabled" type="submit" disabled >Login</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script src="build/js/main.js"></script>
+</body>
+</html>
