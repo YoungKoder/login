@@ -39,22 +39,18 @@ window.onload = function(){
         overlay.style.display = 'none';
     });
 
-    function createArticle(){
-        article.classList.add("article--show");
-        articleHeader.innerHTML = ""+articlePopupHeader.value;
-        articleContent.innerHTML = ""+articlePopupContent.value;
-    }
-    
     function showArticle() {
+        debugger
         let lenghtArticles = +localStorage.getItem('articles');
-        
+        articlesData = [];
         for (let i = 0; i < lenghtArticles; i++) {
             articlesData.push(JSON.parse(localStorage.getItem('article'+i)));         
         }
         let articlesHtmlContent = document.getElementById('articles');
         articlesHtmlContent.innerHTML = '';
+        
        for (let i = 0; i < articlesData.length; i++) {
-       
+
         const articleLAyout = 
 
         `
@@ -70,7 +66,9 @@ window.onload = function(){
 
         let allArticles = document.querySelector("#articles");
         allArticles.insertAdjacentHTML('afterbegin',articleLAyout);
-        // localStorage.setItem('articlesArr',JSON.stringfy(articlesData));
+        
+        localStorage.setItem('articlesArr',JSON.stringify(articlesData));
+
         // let articleItemHtmlContent = document.createElement('div');
         // articleItemHtmlContent.classList = 'article';
 
@@ -100,6 +98,12 @@ window.onload = function(){
        }
     }
 
+    // function fillArticle(){
+    //     article.classList.add("article--show");
+    //     articleHeader.innerHTML = ""+articlePopupHeader.value;
+    //     articleContent.innerHTML = ""+articlePopupContent.value;
+    // }
+
     function savingDataOfArticle(){
         let article = {};
         let lastIdItem = +localStorage.getItem('articles');
@@ -109,6 +113,8 @@ window.onload = function(){
         article.content = ""+articlePopupContent.value;
 
         lastIdItem++;
+
+
 
         localStorage.setItem('articles',lastIdItem);
         localStorage.setItem('article'+article.id, JSON.stringify(article));
@@ -120,13 +126,17 @@ window.onload = function(){
         if(articlePopupHeader.value =='' || articlePopupContent.value ==''){
             overlay.style.display = 'none';
         }else{
-            let counter = localStorage.getItem('counter');
+            // let counter = localStorage.getItem('counter');
+            // debugger
             savingDataOfArticle();
-            createArticle();
+            showArticle();
+            // fillArticle();
+            
             
             articlePopupContent.value = "";
             articlePopupHeader.value ="";
             overlay.style.display = 'none';
+            
         }
         
     });
@@ -134,13 +144,21 @@ window.onload = function(){
     // article.addEventListener('click',function(e){
     //     // debugger
     //     let choosenElement = e.target;
-    //     let parentOfChEl = choosenElement.closest('article');
-    //     let idPArentOfChel = parentOfChEl.getAttribute('data-id');
-    //     for(let i=0;i<articlesData.length;i++){
-    //         if(articlesData[i].id == idPArentOfChel){
-
+    //     console.log(choosenElement);
+    //     let parentOfChEl = choosenElement.closest('.article');
+    //     console.log(parentOfChEl);
+    //     let idPArentOfChEl = parentOfChEl.dataset.id;
+    //     if(choosenElement == articleActionsModify){
+    //         for(let i=0;i<articlesData.length;i++){
+    //             if(articlesData[i].id == idPArentOfChEl){
+    //                 overlay.style.display = 'flex';
+    //                 articlePopupHeader.value = articlesData[i].title;
+    //                 articlePopupContent.value = articlesData[i].content;
+    //                 localStorage.setItem('')
+    //             }
     //         }
     //     }
+        
         
         
     // })
