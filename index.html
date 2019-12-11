@@ -9,25 +9,25 @@
 </head>
 <body>
     <div class="container">
-        <form class="form" action="file:///C:/myfiles/login/login/main.html">
+        <form class="form js-form" action="file:///C:/myfiles/login/login/main.html">
             <span class="form-title">LOG IN</span>
-            <div class="wrapAllInputs">
-                <div class="wrap-input" data-validate="Введите email (...@email.com)">
+            <div class="wrapAllInputs wrapAllInputs-js">
+                <div class="wrap-input wrap-input-js" data-validate="Введите email (...@email.com)">
                     <label for="email"><i class="icon icon-user"></i></label>
-                    <input id="email" class="input" type="text" name="email" placeholder="Email" required>
+                    <input id="email-js" class="input-js input" type="text" name="email" placeholder="Email" required>
                 </div>
-                <div class="wrap-input " data-validate="Пароль должен местить 8 символов">
+                <div class="wrap-input wrap-input-js" data-validate="Пароль должен местить 8 символов">
                     <label for="password"><i class="icon icon-lock"></i></label>
-                    <input id="password" class="input" type="password" name="password" placeholder="Password" required>
+                    <input id="password-js" class="input-js input" type="password" name="password" placeholder="Password" required>
                 </div>
             </div>
             <div class="wrap-btn ">
-                <button class="login-btn login-btn--disabled" type="submit" disabled >Login</button>
+                <button class="login-btn-js login-btn login-btn--disabled" type="submit" disabled >Login</button>
             </div>
         </form>
     </div>
 
-
+    <script src="build/js/main-variables.js"></script>
     <script src="build/js/main.js"></script>
 </body>
 </html>

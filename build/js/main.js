@@ -1,30 +1,24 @@
 "use strict";
 
 window.onload = function(){
-    let form = document.querySelector('.form'),
-        btnLogIn = document.querySelector('.login-btn'),
-        wrapAllInput = document.querySelectorAll('.wrapAllInputs')[0],
-        inputs = document.querySelectorAll('.input'),
-        inputWrap = document.querySelectorAll('.wrap-input'),
-        inputEmail = document.getElementById('email'),
-        inputPasw = document.getElementById('password'),
-        inputPaswval;
+    
+    let inputPaswval;
     let user = {};
 
     function doesInputExist(){
         if(inputEmail.value ==''||inputPasw.value ==''){
             btnLogIn.disabled = true;
-            btnLogIn.classList.add('login-btn--disabled');
+            btnLogIn.classList.add(logBtnDis);
             return false;
         }else{
             btnLogIn.disabled = false;
-            btnLogIn.classList.remove('login-btn--disabled');
+            btnLogIn.classList.remove(logBtnDis);
         }
     }
     
     function checkForm(){
         for(let i =0; i < inputWrap.length; i++){
-            if(inputWrap[i].classList.contains("alertValidate")){
+            if(inputWrap[i].classList.contains(alertValidate)){
                 return false;
             }
             return true;
@@ -34,25 +28,25 @@ window.onload = function(){
     function checkInput(a){
         if(inputs[a] == inputPasw){
             inputPaswval = ""+inputPasw.value;
-            inputWrap[a].classList.remove("alertValidate");
-            if(inputPaswval.length != 8 ){
+            inputWrap[a].classList.remove(alertValidate);
+            if(inputPaswval.length != lengthOfPassword ){
                 btnLogIn.disabled = true;
-                btnLogIn.classList.add('login-btn--disabled');
-                inputWrap[a].classList.add("alertValidate");
+                btnLogIn.classList.add(logBtnDis);
+                inputWrap[a].classList.add(alertValidate);
             }
         }
         else if(inputs[a] == inputEmail){
-            inputWrap[a].classList.remove("alertValidate");
-            if(!inputs[a].value.includes('@email.com')){
+            inputWrap[a].classList.remove(alertValidate);
+            if(!inputs[a].value.includes(prefiksEmail)){
                 btnLogIn.disabled = true;
-                btnLogIn.classList.add('login-btn--disabled');
-                inputWrap[a].classList.add("alertValidate");
+                btnLogIn.classList.add(logBtnDis);
+                inputWrap[a].classList.add(alertValidate);
             }
         }
     }
 
 
-    wrapAllInput.addEventListener('focusout',function(e){
+    wrapAllInput.addEventListener(eventFocusOut,function(e){
         let selectedInput = e.target;
         if(selectedInput && selectedInput.classList.contains('input')){
             for(let i=0; i < inputs.length;i++){
@@ -61,15 +55,15 @@ window.onload = function(){
                 }
             }
         }
-    })
+    });
     
-    inputEmail.addEventListener('keyup',function(){
+    inputEmail.addEventListener(eventKeyUp,function(){
         doesInputExist();
-    })
+    });
 
-    inputPasw.addEventListener('keyup',function(){
+    inputPasw.addEventListener(eventKeyUp,function(){
         doesInputExist();
-    })
+    });
 
     function setUserIntoStorage(user){
         let userStr = JSON.stringify(user);
@@ -78,13 +72,14 @@ window.onload = function(){
     
     function setUserRole(){
        
-        if(inputEmail.value.includes('admin')){
-            localStorage.setItem('role','admin');
+        if(inputEmail.value.includes(roleAdmin)){
+            localStorage.setItem('role',roleAdmin);
             return;
         }
-        localStorage.setItem('role','user');
+        localStorage.setItem('role', roleUser);
     }
-    form.addEventListener('submit', function(e){
+
+    form.addEventListener(eventSubmit, function(e){
         let check = checkForm();
         if(check){
             user.email = "" + inputEmail.value;
@@ -96,7 +91,7 @@ window.onload = function(){
         if (!check) {
             e.defaultPrevented();
         }
-    })
+    });
 
     
 }
