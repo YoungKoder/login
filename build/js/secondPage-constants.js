@@ -4,6 +4,7 @@ const popupClose = document.querySelector(".popup-close");
 const popupSave = document.querySelector(".btn-articleSave");
 const articlePopupHeader = document.querySelector(".popup-article-header");
 const articlePopupContent = document.querySelector(".popup-article-content");
+const popupSaveEdit = document.querySelector(".btn-edit");
 
 const eventClick = 'click';
 
